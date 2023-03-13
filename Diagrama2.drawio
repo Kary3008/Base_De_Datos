@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-03-13T06:33:33.363Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57" etag="dRMaLpO9R6v23sWG7ZXG" version="21.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-13T06:37:55.196Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57" etag="jXoayrKpIY4pWBF-gqZr" version="21.0.6" type="github">
   <diagram name="Página-1" id="YeOJ-3OC_GH5-bEFDjOm">
-    <mxGraphModel dx="1956" dy="1058" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1600" dy="865" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -283,6 +283,33 @@
         </mxCell>
         <mxCell id="74G3KGj7Aawm8GGu8afZ-88" value="Pertenece" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="990" y="534" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="74G3KGj7Aawm8GGu8afZ-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.068;entryY=0.48;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="74G3KGj7Aawm8GGu8afZ-91" target="74G3KGj7Aawm8GGu8afZ-92">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="74G3KGj7Aawm8GGu8afZ-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="74G3KGj7Aawm8GGu8afZ-91" target="74G3KGj7Aawm8GGu8afZ-96">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="74G3KGj7Aawm8GGu8afZ-91" value="Empresa" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="390" y="695" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="74G3KGj7Aawm8GGu8afZ-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="74G3KGj7Aawm8GGu8afZ-92" target="74G3KGj7Aawm8GGu8afZ-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="74G3KGj7Aawm8GGu8afZ-92" value="Almacena" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="778" y="710" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="74G3KGj7Aawm8GGu8afZ-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="74G3KGj7Aawm8GGu8afZ-96" target="74G3KGj7Aawm8GGu8afZ-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="10" y="620" />
+              <mxPoint x="10" y="190" />
+              <mxPoint x="220" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="74G3KGj7Aawm8GGu8afZ-96" value="Almacena" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="90" y="620" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
