@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-03-13T21:54:17.670Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57" etag="lGHFUKIkWp9DRhDwTKc9" version="21.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-13T22:00:30.337Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57" etag="4r9vx4KymxM2DDhdY0lP" version="21.0.6" type="github">
   <diagram name="Página-1" id="iqzOQOE_9RH0irhJ0Z7s">
-    <mxGraphModel dx="880" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2269" dy="595" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -106,11 +106,14 @@
         <mxCell id="vlib95MxSo92HoWstXPR-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlib95MxSo92HoWstXPR-30" target="vlib95MxSo92HoWstXPR-45">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlib95MxSo92HoWstXPR-30" target="vlib95MxSo92HoWstXPR-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="vlib95MxSo92HoWstXPR-30" value="Médico" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="320" y="310" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vlib95MxSo92HoWstXPR-31" value="AñoColegió" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="290" y="374" width="100" height="40" as="geometry" />
+          <mxGeometry x="330" y="374" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="vlib95MxSo92HoWstXPR-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlib95MxSo92HoWstXPR-34" target="vlib95MxSo92HoWstXPR-37">
           <mxGeometry relative="1" as="geometry" />
@@ -165,6 +168,33 @@
         </mxCell>
         <mxCell id="vlib95MxSo92HoWstXPR-50" value="Diagnóstico" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="560" y="550" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlib95MxSo92HoWstXPR-56" target="vlib95MxSo92HoWstXPR-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlib95MxSo92HoWstXPR-56" target="vlib95MxSo92HoWstXPR-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlib95MxSo92HoWstXPR-56" target="vlib95MxSo92HoWstXPR-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-56" value="Sala" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="520" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-57" value="Id_Sala" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="440" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-58" value="Descripción" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="-90" y="530" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-59" value="Ubicación" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry y="610" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlib95MxSo92HoWstXPR-64" target="vlib95MxSo92HoWstXPR-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vlib95MxSo92HoWstXPR-64" value="Usa" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="170" y="440" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
