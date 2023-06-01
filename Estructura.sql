@@ -1,31 +1,36 @@
-
+--PRÁCTICA SQL
+--EJERCICIO 1
 CREATE TABLE cliente (
   ID_Cliente int NOT NULL,
   nombre varchar(50) NOT NULL,
   primerApellido varchar(50) NOT NULL,
   segundoApellido varchar(50) NOT NULL,
-  rfc varchar(50) NOT NULL,
+  rfc varchar(50),
   telefono varchar(50) NOT NULL,
   correoElectronico varchar(200) NOT NULL,
   direccion_pais varchar(100) NOT NULL,
   direccion_estado varchar(100) NOT NULL,
   direccion_delegacion varchar(100) NOT NULL,
-  direccion_colonia varchar(100) NOT NULL,
-  direccion_calle varchar(100) NOT NULL,
-  direccion_numext varchar(100) NOT NULL,
-  direccion_numint varchar(100) NOT NULL,
-  direccion_cp varchar(6) NOT NULL
+  direccion_colonia varchar(100),
+  direccion_calle varchar(100),
+  direccion_numext varchar(100),
+  direccion_numint varchar(100),
+  direccion_cp varchar(6),
+  credito varchar(50) NOT NULL,
+  deuda varchar(50) NOT NULL,
+  fecha_alta date NOT NULL,
+  fecha_nac date NOT NULL
 );
 
 -- Estructura de tabla para la tabla `producto`
 
 CREATE TABLE producto (
   ID_Producto int NOT NULL,
+  ID_Proveedor int,
   nombre varchar(50) NOT NULL,
   precioCompra numeric(10,4) NOT NULL,
   precioSugeridoVenta numeric(10,4) NOT NULL,
   existencia numeric(10,4) NOT NULL,
-  ID_Proveedor int NOT NULL,
   precioMinimo numeric(10,4) NOT NULL
 );
 
@@ -36,7 +41,7 @@ CREATE TABLE producto_vendido (
   ID_Venta int NOT NULL,
   cantidad decimal(10,4) NOT NULL,
   precioVenta decimal(10,4) NOT NULL,
-  ID_Producto int NOT NULL
+  ID_Producto int
 );
 
 
@@ -45,9 +50,9 @@ CREATE TABLE producto_vendido (
 CREATE TABLE proveedor (
   ID_Proveedor int NOT NULL,
   nombre varchar(50) NOT NULL,
-  telefono varchar(15) NOT NULL,
-  email varchar(20) NOT NULL,
-  rfc varchar(13) NOT NULL
+  telefono varchar(15),
+  email varchar(20),
+  rfc varchar(13)
 );
 
 -- Estructura de tabla para la tabla `venta`
@@ -60,47 +65,51 @@ CREATE TABLE venta (
 );
 
 -- Indices de la tabla `cliente`
-ALTER TABLE cliente
-  ADD PRIMARY KEY (ID_Cliente);
+ALTER TABLE cliente ADD PRIMARY KEY (ID_Cliente);
 
 -- Indices de la tabla `producto`
-ALTER TABLE producto
-  ADD PRIMARY KEY (ID_Producto);
+ALTER TABLE producto ADD PRIMARY KEY (ID_Producto);
  -- ADD KEY FK_Producto (ID_Proveedor);
 
 -- Indices de la tabla `producto_vendido`
-ALTER TABLE producto_vendido
-  ADD PRIMARY KEY (ID_ProductoVendido);
+ALTER TABLE producto_vendido ADD PRIMARY KEY (ID_ProductoVendido);
  -- ADD KEY FK_ProductoVendido1 (ID_Venta),
   --ADD KEY FK_ProductoVendido2 (ID_Producto);
 
 -- Indices de la tabla `proveedor`
-ALTER TABLE proveedor
-  ADD PRIMARY KEY (ID_Proveedor);
+ALTER TABLE proveedor ADD PRIMARY KEY (ID_Proveedor);
 
 -- Indices de la tabla `venta`
-ALTER TABLE venta
-  ADD PRIMARY KEY (ID_Venta);
+ALTER TABLE venta ADD PRIMARY KEY (ID_Venta);
   --ADD KEY FK_Venta (ID_cliente);
 
 -- Restricciones para tablas volcadas
 
 -- Filtros para la tabla `producto`
-ALTER TABLE producto
-  ADD CONSTRAINT FK_Producto FOREIGN KEY (ID_Proveedor) REFERENCES proveedor (ID_Proveedor);
+ALTER TABLE producto ADD CONSTRAINT FK_Producto FOREIGN KEY (ID_Proveedor) REFERENCES proveedor (ID_Proveedor);
 
 --
 -- Filtros para la tabla `producto_vendido`
 --
-ALTER TABLE producto_vendido
-  ADD CONSTRAINT FK_ProductoVendido1 FOREIGN KEY (ID_Venta) REFERENCES venta (ID_Venta),
-  ADD CONSTRAINT FK_ProductoVendido2 FOREIGN KEY (ID_Producto) REFERENCES producto (ID_Producto);
+ALTER TABLE producto_vendido ADD CONSTRAINT FK_ProductoVendido1 FOREIGN KEY (ID_Venta) REFERENCES venta (ID_Venta), ADD CONSTRAINT FK_ProductoVendido2 FOREIGN KEY (ID_Producto) REFERENCES producto (ID_Producto);
 
 --
 -- Filtros para la tabla `venta`
 --
-ALTER TABLE venta
-  ADD CONSTRAINT FK_Venta FOREIGN KEY (ID_cliente) REFERENCES cliente (ID_Cliente);
+ALTER TABLE venta ADD CONSTRAINT FK_Venta FOREIGN KEY (ID_cliente) REFERENCES cliente (ID_Cliente);
+
+
+--PRÁCTICA DML
+
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (1,'Kary', 'Bautista','Bautista',null,'536782','kary@gmail.com','Mexico', 'CDMX','Álvaro Obregón', null, null, null, null,null, 5000, 2000, '2023-04-13','2003-05-28');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (2,'Oscar', 'Pardo','Sanchez',null,'5363895','oscar@gmail.com','Mexico', 'CDMX','Hidalgo', null, null, null, null,null, 10000, 1050, '2023-02-21','2002-02-28');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (3,'Francisco','Pardo','Sanchez',null,'556388290','francisco12@gmail.com','Mexico', 'CDMX','Hidalgo', null, null, null, null,null, 20000, 3050, '2023-01-21','2002-02-28');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (4,'Osvaldo', 'Pardo','Sanchez',null,'5293545','osvaldo@gmail.com','Mexico', 'CDMX','Hidalgo', null, null, null, null,null, 10000, 1050, '2023-04-19','2002-07-19');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (5,'Alan', 'Leyva','Navarro',null,'52849503','alan@gmail.com','Mexico', 'CDMX','Coyoacán', null, null, null, null,null, 10000, 1050, '2023-05-28','1995-02-25');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (6,'Omar', 'Leyva','Navarro',null,'5328945','omarA@gmail.com','Mexico', 'Ciudad de México','Cuauhtemoc', null, null, null, null,null, 3000,1050, '2023-05-20','1995-05-15');
+
+
+
 
 
 Insert into Proveedor (ID_Proveedor, nombre, telefono, email, rfc) values (1,'LG', '5535678', 'lg@hotmail.com', '23456');
@@ -121,16 +130,6 @@ Insert into Producto (ID_Producto, ID_Proveedor, nombre, existencia, precioSuger
 Insert into Producto (ID_Producto, ID_Proveedor, nombre, existencia, precioSugeridoVenta, precioMinimo, precioCompra) values (6,3,'MP3 Player', 13, 900, 900, 500);
 Insert into Producto (ID_Producto, ID_Proveedor, nombre, existencia, precioSugeridoVenta, precioMinimo, precioCompra) values (7,6,'Compu', 15, 19000, 17000,11500);
 Insert into Producto (ID_Producto, ID_Proveedor, nombre, existencia, precioSugeridoVenta, precioMinimo, precioCompra) values (8,5,'Monitor', 10, 19000, 17000, 11500);
-
-
-INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp) values (1,'Kary', 'Bautista','Bautista','2737','536782','kary@gmail.com','Mexico', 'CDMX','Álvaro Obregón', 'Valle','Independencia', '143', '2','45395');
-INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp) values (2,'Oscar', 'Pardo','Sanchez','2737','536782','oscar@gmail.com','Mexico', 'CDMX','Álvaro Obregón', 'Valle','Independencia', '143', '2','45395');
-INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp) values (3,'Osvaldo', 'Pardo','Sanchez','2737','536782','osvaldo@gmail.com','Mexico', 'CDMX','Álvaro Obregón', 'Valle','Independencia', '143', '2','45395');
-INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp) values (4,'Francisco', 'Pardo','Sanchez','2737','536782','pancho@gmail.com','Mexico', 'CDMX','Álvaro Obregón', 'Valle','Independencia', '143', '2','45395');
-INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp) values (5,'Alan', 'Navarro','Leyva','2737','536782','alan@gmail.com','Mexico', 'CDMX','Álvaro Obregón', 'Valle','Independencia', '143', '2','45395');
-INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp) values (6,'Omar', 'Navarro','Leyva','2737','536782','omar@gmail.com','Mexico', 'CDMX','Álvaro Obregón', 'Valle','Independencia', '143', '2','45395');
-INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp) values (7,'Diego', 'Sosa','Raymundo','2737','536782','diego@gmail.com','Mexico', 'CDMX','Álvaro Obregón', 'Valle','Independencia', '143', '4','45395');
-INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp) values (8,'Alonso', 'Villalpando','Camarena','2737','536782','alonso@gmail.com','Mexico', 'CDMX','Álvaro Obregón', 'Valle','Independencia', '143','4','45395');
 
 
 INSERT INTO Venta (ID_Venta, fecha, ID_Cliente, montoTotal) values (1, '2020/09/15', 2, (3*2000)+900+(3*5500));
