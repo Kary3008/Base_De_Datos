@@ -167,3 +167,53 @@ UPDATE producto
 	SET nombre='Televisor'
 	WHERE nombre='Tele'; --se actualizo 1 registro
 
+
+--PRACTICA SELECT SELECCION
+SELECT * FROM cliente WHERE nombre = 'Eduardo';
+SELECT * FROM cliente WHERE nombre <> 'Eduardo';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--PRACTICA ÚLT
+CREATE VIEW infoClientePorDelegacion
+AS
+SELECT direccion_delegacion, COUNT(*)NumClientes,
+	AVG(deuda)PromedioDeuda,
+	AVG(credito)PromedioCredito
+FROM cliente
+GROUP BY direccion_pais, direccion_estado, direccion_delegacion;
+
+
+
+CREATE FUNCTION valor(valor numeric, porc numeric)
+RETURNS numeric AS
+$$
+DECLARE 
+Resultado numeric:=0;
+BEGIN
+Resultado:=valor*(porc/100);
+RAISE NOTICE 'El % por ciento de % es %', porc, valor, Resultado;
+RETURN Resultado;
+END;
+$$
+LANGUAGE PLPGSQL;
+--se manda a llamar la función
+SELECT valor(100,110);
