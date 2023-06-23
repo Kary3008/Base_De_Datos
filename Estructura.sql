@@ -132,6 +132,10 @@ INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, t
 INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (28,'Diego', 'Sosa',null,null,'5643289445','dir@gmail.com','Mexico', 'CDMX','GAM', null, null, null, null,null, 5000, 10000, '2010-03-10','2007-09-07');
 INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (29,'Monserrat', 'López','Pérez','LOPM10284','5289894390','monse@gmail.com','Mexico', 'CDMX',null, null, null, null, null,null, 3000, 5000, '2010-12-01','2002-06-29');
 INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (30,'Rick', 'Sánchez',null,null,'5293089445','rickSanchez@gmail.com','Mexico', 'CDMX',null, null, null, null, null,null, 5000, 10000, '2010-03-12','2009-09-07');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (31,'Juan', 'Alvarado','Pérez','ALPJ719304','5627283940','juan@gmail.com','Mexico', 'CDMX','Coyoacán', null, null, null, null,null, 20000, 5000, '2010-12-19','2002-06-29');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (32,'Eduardo', 'Martínez',null,null,'5628395090','martinez@gmail.com','Mexico', 'CDMX','Iztacalco', null, null, null, null,null, 10000, 10000, '2016-03-12','2006-09-07');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (33,'Blanca', 'Paz','García',null,'5638407936','blanca@gmail.com','Mexico', 'CDMX','Coyoacán', null, null, null, null,null, 10000, 5000, '2010-02-12','1995-03-18');
+INSERT INTO Cliente (ID_Cliente, nombre, primerApellido, segundoApellido, rfc, telefono, correoElectronico, direccion_pais, direccion_estado, direccion_delegacion, direccion_colonia, direccion_calle, direccion_numext, direccion_numint, direccion_cp, credito, deuda, fecha_alta, fecha_nac) values (34,'Abril', 'Govea',null,null,'5528402783','govea@gmail.com','Mexico', 'CDMX','Iztacalco', null, null, null, null,null, 20000, 10000, '2020-07-10','2001-10-04');
 
 
 INSERT INTO proveedor (ID_Proveedor, nombre, telefono, email, rfc) VALUES (1,'LG', '5535678', 'lg@hotmail.com', '849966');
@@ -201,6 +205,27 @@ INSERT INTO venta (ID_Venta, fecha, ID_Cliente, montoTotal) VALUES (18, '2021/12
 INSERT INTO venta (ID_Venta, fecha, ID_Cliente, montoTotal) VALUES (19, '2023/06/22', 13, (2*800)+200+(3*150));
 INSERT INTO venta (ID_Venta, fecha, ID_Cliente, montoTotal) VALUES (20, '2022/08/16', 9, (3*650)+11000);
 
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (1,5,3,4500,4);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (2,3,2,20000,7);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (3, 8, 1, 14000, 18);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (4,1,5,500,2);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (5,7,2,1000,3);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (6,13,5,3500,10);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (7,4,12,1700,8);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (8,14,2,20000,3);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (9,18,12,7800,2);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (10,17,9,1000,7);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (11,20,16,1000,9);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (12, 18, 2, 18000, 1);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (13,12,15, 35000,10);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (14,1,2,24000,18);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (15,13,2,9500,5);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (16,18,2, 18900,19);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (17,3,1,4500,4);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (18, 2, 5,17900,3);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (19,7,10,3000,3);
+INSERT INTO producto_vendido (id_productovendido, id_venta, cantidad, precioVenta, id_producto) VALUES (20,18,2,18000,19);
+
 
 UPDATE cliente
 	SET direccion_estado='CDMX'
@@ -239,13 +264,26 @@ SELECT * FROM cliente WHERE direccion_delegacion IS NULL;
 --PRACTICA SELECT OPERADORES LÓGICOS
 SELECT * FROM cliente WHERE NOT (nombre = 'Eduardo' OR nombre = 'Juan'); 
 SELECT * FROM cliente WHERE credito BETWEEN 5000 AND 10000; 
-SELECT * FROM cliente WHERE nombre = 'Eduardo' AND primerapellido = 'Martinez';
+SELECT * FROM cliente WHERE nombre = 'Eduardo' AND primerapellido = 'Martínez';
 SELECT * FROM cliente WHERE (NOT nombre = 'Juan') AND primerapellido = 'Alvarado';
 SELECT * FROM cliente WHERE nombre = 'Blanca' OR primerapellido = 'Rodríguez';
 SELECT * FROM cliente WHERE primerapellido = 'Paz' OR segundoapellido = 'Paz';
 SELECT * FROM cliente WHERE primerapellido='Ambriz' OR primerapellido= 'Pérez' OR primerapellido =  'García';
 SELECT * FROM cliente WHERE nombre= 'Abril' AND (primerapellido =  'Govea' OR primerapellido = 'Pérez');
 SELECT * FROM cliente WHERE direccion_delegacion = 'Iztacalco' OR direccion_delegacion = 'GAM' OR direccion_delegacion = 'Benito Juárez';
+SELECT * FROM cliente WHERE (direccion_delegacion = 'Iztacalco' OR direccion_delegacion = 'Coyoacán') AND deuda BETWEEN 10000 AND 20000;
+
+
+--PRACTICA SELECT OPERADORES ESPECIALES
+SELECT * FROM cliente WHERE credito BETWEEN 5000 AND 10000;
+SELECT * FROM cliente WHERE direccion_delegacion IN ('Iztacalco', 'Coyoacán', 'Benito Juárez');
+SELECT * FROM cliente WHERE deuda BETWEEN 10000 AND 15000 AND (deuda/6) BETWEEN 500 AND 1000;
+SELECT * FROM cliente WHERE direccion_delegacion IN ('Iztacalco', 'Coyoacán', 'Benito Juárez') AND deuda BETWEEN 10000 AND 15000;
+SELECT * FROM cliente WHERE direccion_delegacion IN ('Iztacalco', 'Coyoacán', 'Benito Juárez') AND primerapellido = 'Blanco';
+SELECT * FROM cliente WHERE direccion_delegacion IN ('Iztacalco', 'Coyoacán', 'Benito Juárez') AND primerapellido IN ('Blanco', 'Pérez', 'García');
+
+
+--PRACTICA FUNCIONES CADENA
 
 
 
