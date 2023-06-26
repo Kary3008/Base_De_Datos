@@ -55,14 +55,13 @@ CREATE TABLE materia(
 	nombre_m CHARACTER VARYING(200),
 	creditos INTEGER,
 	id_semestre INTEGER,
-	id_alumno INTEGER
 );
 
 CREATE TABLE impartir_clase(
 	id_profesor INTEGER,
 	id_materia INTEGER,
 	ult_anio DATE,
-	clave_pe CHARACTER VARYING(100),
+	clave_pe INTEGER,
 	id_alumno INTEGER
 );
 
@@ -76,8 +75,8 @@ CREATE TABLE profesor(
 );
 
 CREATE TABLE personas(
-	id_personas INTEGER
-	nombre CHARACTER VARYING(200),
+	id_personas INTEGER,
+	nombre_p CHARACTER VARYING(200),
 	apellido_p CHARACTER VARYING(200),
 	apellido_m CHARACTER VARYING(200),
 	sexo CHARACTER VARYING(50),
@@ -114,3 +113,36 @@ CREATE TABLE inscripcion(
 );
 
 
+--LLAVES PRIMARIAS
+ALTER TABLE escuela ADD PRIMARY KEY (id_escuela);
+ALTER TABLE carrera ADD PRIMARY KEY (id_carrera);
+ALTER TABLE grupo ADD PRIMARY KEY (id_grupo);
+ALTER TABLE area ADD PRIMARY KEY (id_area);
+ALTER TABLE alumno ADD PRIMARY KEY (id_alumno);
+ALTER TABLE semestre ADD PRIMARY KEY (id_semestre);
+ALTER TABLE periodoescolar ADD PRIMARY KEY (clave_pe);
+ALTER TABLE materia ADD PRIMARY KEY (id_materia);
+ALTER TABLE profesor ADD PRIMARY KEY (id_profesor);
+ALTER TABLE personas ADD PRIMARY KEY (id_personas);
+ALTER TABLE empleado ADD PRIMARY KEY (id_empleado);
+ALTER TABLE tipo ADD PRIMARY KEY (id_tipo);
+
+
+--CLAVES FORÁNEAS
+ALTER TABLE carrera ADD CONSTRAINT FK_Carrera1 FOREIGN KEY (id_escuela) REFERENCES escuela (id_escuela);
+ALTER TABLE carrera ADD CONSTRAINT FK_Carrera2 FOREIGN KEY (id_area) REFERENCES area (id_area);
+ALTER TABLE grupo ADD CONSTRAINT FK_Grupo FOREIGN KEY (id_carrera) REFERENCES carrera (id_carrera);
+ALTER TABLE alumno ADD CONSTRAINT FK_Alumno1 FOREIGN KEY (id_tipo) REFERENCES tipo (id_tipo);
+ALTER TABLE alumno ADD CONSTRAINT FK_Alumno2 FOREIGN KEY (id_personas) REFERENCES personas (id_personas);
+ALTER TABLE periodoescolar ADD CONSTRAINT FK_Periodo FOREIGN KEY (id_semestre) REFERENCES semestre (id_semestre);
+ALTER TABLE materia ADD CONSTRAINT FK_Materia1 FOREIGN KEY (id_semestre) REFERENCES semestre (id_semestre);
+ALTER TABLE profesor ADD CONSTRAINT FK_Profesor1 FOREIGN KEY (id_personas) REFERENCES personas (id_personas);
+ALTER TABLE profesor ADD CONSTRAINT FK_Profesor2 FOREIGN KEY (id_tipo) REFERENCES tipo (id_tipo);
+ALTER TABLE empleado ADD CONSTRAINT FK_Empleado FOREIGN KEY (id_tipo) REFERENCES tipo (id_tipo);
+ALTER TABLE impartir_clase ADD CONSTRAINT FK_Clase1 FOREIGN KEY (id_materia) REFERENCES materia (id_materia);
+ALTER TABLE impartir_clase ADD CONSTRAINT FK_Clase2 FOREIGN KEY (id_profesor) REFERENCES profesor (id_profesor);
+ALTER TABLE impartir_clase ADD CONSTRAINT FK_Clase3 FOREIGN KEY (clave_pe) REFERENCES periodoescolar (clave_pe);
+ALTER TABLE impartir_clase ADD CONSTRAINT FK_Clase4 FOREIGN KEY (id_alumno) REFERENCES alumno (id_alumno);
+ALTER TABLE inscripcion ADD CONSTRAINT FK_Insc1 FOREIGN KEY (id_empleado) REFERENCES empleado (id_empleado);
+ALTER TABLE inscripcion ADD CONSTRAINT FK_Insc2 FOREIGN KEY (id_alumno) REFERENCES alumno (id_alumno);
+ALTER TABLE inscripcion ADD CONSTRAINT FK_Insc3 FOREIGN KEY (id_grupo) REFERENCES grupo (id_grupo);
