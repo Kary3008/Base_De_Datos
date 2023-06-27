@@ -146,3 +146,5 @@ ALTER TABLE impartir_clase ADD CONSTRAINT FK_Clase4 FOREIGN KEY (id_alumno) REFE
 ALTER TABLE inscripcion ADD CONSTRAINT FK_Insc1 FOREIGN KEY (id_empleado) REFERENCES empleado (id_empleado);
 ALTER TABLE inscripcion ADD CONSTRAINT FK_Insc2 FOREIGN KEY (id_alumno) REFERENCES alumno (id_alumno);
 ALTER TABLE inscripcion ADD CONSTRAINT FK_Insc3 FOREIGN KEY (id_grupo) REFERENCES grupo (id_grupo);
+
+

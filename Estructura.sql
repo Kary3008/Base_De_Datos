@@ -310,6 +310,104 @@ SELECT SUBSTR(nombre, 1,1) || UPPER(SUBSTR(nombre,2,1)) || SUBSTR(nombre, 3,1) |
 SELECT LEFT(nombre, 1) || UPPER(SUBSTR(nombre,2,1)) ||  SUBSTR(nombre, 3, LENGTH(nombre) - 3) || UPPER(RIGHT(nombre, 1)) FROM cliente;
 
 
+--PRÁCTICA FUNCIONES_FECHA
+SELECT CURRENT_DATE;
+SELECT CURRENT_DATE + INTERVAL '1 week';
+SELECT DATE_PART('year', CURRENT_DATE) - DATE_PART('year', fecha_alta) AS Antiguedad FROM cliente;
+SELECT DATE_PART('year', fecha_alta) AS Anio, DATE_PART('month', fecha_alta) AS Mes, DATE_PART('day', fecha_alta) AS Dia FROM clientes;
+SELECT fecha_alta + INTERVAL '1 month', fecha_alta + INTERVAL '2 month', fecha_alta + INTERVAL '3 month' FROM clientes WHERE fecha_alta = CURRENT_DATE;
+SELECT 'EL DIA DE HOY ' || TO_CHAR(CURRENT_DATE, 'DD/MM/YYYY') || ' ES ' || TO_CHAR(CURRENT_DATE, 'DAY');
+SELECT nombre || ' SE DIO DE ALTA EL ' || TO_CHAR(fecha_alta, 'DAY DD/MM/YYYY') FROM cliente;
+SELECT * FROM cliente WHERE fecha_alta >= '2010-01-01' AND fecha_alta <= '2010-12-31';
+SELECT * FROM cliente WHERE DATE_PART('month', fecha_alta) = 12;
+SELECT * FROM cliente WHERE DATE_PART('month', fecha_alta) = 2 AND DATE_PART('year', fecha_alta) = 2009;
+SELECT * FROM cliente WHERE fecha_alta > CURRENT_DATE - INTERVAL '6 months';
+SELECT * FROM cliente WHERE DATE_PART('year', CURRENT_DATE) - DATE_PART('year', fecha_nac) < 18;
+SELECT * FROM cliente WHERE DATE_PART('month', fecha_nac) = DATE_PART('month', CURRENT_DATE) AND DATE_PART('day', fecha_nac) = DATE_PART('day', CURRENT_DATE);
+SELECT * FROM cliente WHERE DATE_PART('month', fecha_nac) IN (1,2,3,4);
+
+
+--PRACTICA JOIN
+SELECT proveedor.nombre, producto.nombre FROM proveedor JOIN producto ON proveedor.id = producto.id_proveedor;
+SELECT proveedor.nombre, producto.nombre FROM proveedor LEFT JOIN producto ON proveedor.id = producto.id_proveedor;
+SELECT producto_vendido.nombre_producto FROM productoVendido;
+SELECT producto_vendido.fecha_venta FROM producto_vendido;
+SELECT producto.nombre FROM producto JOIN cliente ON producto.id = cliente.id_producto_comprado;
+SELECT cliente.nombre FROM cliente JOIN producto ON cliente.id_producto_comprado = producto.id WHERE producto.nombre = 'DVD';
+SELECT delegacion, SUM(precio) as total_ventas FROM clientes JOIN productos ON clientes.id_producto_comprado = productos.id GROUP BY delegacion;
+SELECT proveedores.nombre, COUNT(productosVendidos.id_producto) as total_vendidos FROM proveedores JOIN productos ON proveedores.id = productos.id_proveedor JOIN productosVendidos ON productos.id = productosVendidos.id_producto GROUP BY proveedores.nombre;
+SELECT clientes.delegacion, COUNT(clientes.id) as total_ventas FROM clientes GROUP BY clientes.delegacion HAVING COUNT(clientes.id) > 2;
+SELECT proveedores.nombre, COUNT(productos.id) as total_productos FROM proveedores JOIN productos ON proveedores.id = productos.id_proveedor GROUP BY proveedores.nombre HAVING COUNT(productos.id) > 3.
+
+
+
+--PRACTICA FUNCIONES
+CREATE OR REPLACE FUNCTION buscar_clientes_edad_delegacion(edad_input integer, delegacion_input varchar)
+RETURNS TABLE (id_cliente integer, nombre varchar, fecha_nac date, direccion_delegacion varchar) AS
+$$
+BEGIN
+    RETURN QUERY SELECT id_cliente, nombre, fecha_nac, direccion_delegacion
+    FROM cliente
+    WHERE direccion_delegacion ILIKE delegacion_input AND EXTRACT(YEAR FROM AGE(CURRENT_DATE, fecha_nac)) = edad_input;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION calcular_bono_antiguedad(fecha_alta date) 
+   RETURNS integer AS 
+   $$
+   DECLARE 
+       antiguedad integer;
+       bono integer;
+   BEGIN
+       antiguedad := extract(year from age(current_date, alta));
+       IF antiguedad BETWEEN 0.5 AND 3 THEN 
+           bono := 1000;
+       ELSEIF antiguedad BETWEEN 3 AND 5 THEN 
+           bono := 2000;
+       ELSE 
+           bono := 5000;
+       END IF;
+       RETURN bono;
+   END;
+   $$ 
+   LANGUAGE plpgsql;
+
+
+--PRACTICA VISTA
+CREATE VIEW resumen_proveedores AS
+SELECT prov.nombre, COUNT(prod.id_producto) AS cantidad_productos, AVG((prod.preciosugeridoventa/prod.preciocompra)-1) AS ganancia_promedio
+FROM proveedor prov 
+LEFT JOIN producto prod ON prod.id_proveedor = prov.id_proveedor
+GROUP BY prov.nombre;
+
+CREATE VIEW clientes_info AS
+SELECT cli.nombre, cli.primerapellido, cli.segundoapellido, cli.correoelectronico, cli.direccion_delegacion, FLOOR(DATE_PART('year', NOW())- DATE_PART('year', cli.fecha_nac)) AS edad
+FROM cliente cli;
+
+CREATE VIEW format_facturas AS
+SELECT cli.nombre || ' ' || cli.primerapellido  || ' ' || cli.segundoapellido AS nombre_completo, cli.direccion_delegacion, venta.fecha, prod.nombre, producto_vendido.cantidad, producto_vendido.precioventa
+FROM cliente cli
+JOIN venta venta ON venta.id_cliente = cli.id_cliente
+JOIN producto_vendido producto_vendido ON producto_vendido.id_venta = venta.id_venta
+JOIN producto prod ON prod.id_producto = producto_vendido.id_producto;
+
+
+CREATE VIEW resumen_deuda AS
+SELECT cli.direccion_delegacion, SUM(cli.deuda) AS deuda_total
+FROM cliente cli
+GROUP BY cli.direccion_delegacion;
+CREATE VIEW contribucion_cliente AS
+SELECT cli.nombre, cli.primerapellido, cli.segundoapellido, cli.direccion_delegacion, cli.deuda, (cli.deuda / cli.deuda/6) 
+	AS contribucion_porcentual
+FROM cliente cli;
+
+
+
+
+
+
+
 
 
 
@@ -359,3 +457,36 @@ $$
 LANGUAGE PLPGSQL;
 --se manda a llamar la función
 SELECT valor(100,110);
+
+
+
+CREATE OR REPLACE FUNCTION listar_clientes()
+RETURNS TABLE(
+	id_cliente int,
+  	nombre varchar(50),
+  	primerapellido varchar(50),
+	segundoapellido varchar(50),
+  	rfc varchar(50),
+  	telefono varchar(50),
+  	correoelectronico varchar(200),
+  	direccion_pais varchar(100),
+  	direccion_estado varchar(100),
+  	direccion_delegacion varchar(100),
+  	direccion_colonia varchar(100),
+  	direccion_calle varchar(100),
+  	direccion_numext varchar(100),
+  	direccion_numint varchar(100),
+  	direccion_cp varchar(6),
+  	credito numeric(10,4),
+  	deuda numeric(10,4),
+  	fecha_alta date,
+  	fecha_nac date
+	)
+AS $$
+BEGIN
+    RETURN QUERY SELECT id_cliente, nombre, primerapellido, segundoapellido,
+  	rfc, telefono,correoelectronico,direccion_pais,direccion_estado,
+  	direccion_delegacion,direccion_colonia,direccion_calle,direccion_numext,direccion_numint,
+  	direccion_cp,credito,deuda,fecha_alta,fecha_nac FROM cliente;
+END;
+$$ LANGUAGE plpgsql;
